@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Django Public Blog - создать статью</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static "css/create_post.css" %}">
+    </head>
+    <body class="content">
+        <div class="header">
+            {% load static %}
+            <img src="{% static "img/logo.png" %}" />
+        </div>
+        <div class="all_article"><a href="../../archive">Все статьи</a></div>
+        <div class="content">
+            <h1>Написать статью</h1>
+            <form method="POST">{% csrf_token %}
+                <input type="text" name="title" placeholder="Название статьи" value="{{ form.title }}">
+                <textarea name="text" placeholder="Текст статьи">{{ form.text }}</textarea>
+                <input type="submit" value="Сохранить">
+            </form>
+            {{ form.errors }}
+        </div>
+    </body>
+</html>
